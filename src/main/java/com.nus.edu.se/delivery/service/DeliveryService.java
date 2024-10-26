@@ -3,6 +3,8 @@ package com.nus.edu.se.delivery.service;
 import com.nus.edu.se.delivery.dao.DeliveryRepository;
 import com.nus.edu.se.delivery.dto.GroupFoodOrderList;
 import com.nus.edu.se.delivery.model.GroupFoodOrder;
+import com.nus.edu.se.delivery.model.StatusEnum;
+import com.nus.edu.se.notification.NotificationService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +29,9 @@ public class DeliveryService {
     @Autowired
     private DeliveryRepository deliveryRepository;
 
+    @Autowired
+    NotificationService notificationService;
+
     private final WebClient.Builder webClientBuilder;
 
     public String resolveToken(HttpServletRequest request) {
@@ -42,7 +47,7 @@ public class DeliveryService {
     }
 
     @Transactional
-    public GroupFoodOrder updateStatus(String orderId, GroupFoodOrder.Status status) {
+    public GroupFoodOrder updateStatus(String orderId, StatusEnum status) {
         UUID orderUUID = UUID.fromString(orderId);
         GroupFoodOrder groupFoodOrder = new GroupFoodOrder();
         Optional<GroupFoodOrder> groupOrder = deliveryRepository.findById(orderUUID);
@@ -51,10 +56,15 @@ public class DeliveryService {
             groupFoodOrder = groupOrder.get();
             groupFoodOrder.setId(orderUUID);
             groupFoodOrder.setStatus(status);
-            if (status== GroupFoodOrder.Status.DELIVERED || status== GroupFoodOrder.Status.ON_DELIVERY){
+            if (status== StatusEnum.DELIVERED || status== StatusEnum.ON_DELIVERY){
                 groupFoodOrder.setGroupOrderDeliveryTime(new Date());
             }
             groupFoodOrder = deliveryRepository.saveAndFlush(groupFoodOrder);
+            try {
+                notificationService.sendNotification(groupFoodOrder, status);
+            } catch (Exception e) {
+                System.err.println("Failed to send notification for order " + groupFoodOrder.getId() + ": " + e.getMessage());
+            }
         } else {
             throw new RuntimeException("Not found GroupOrder with orderId = " + orderId);
         }
