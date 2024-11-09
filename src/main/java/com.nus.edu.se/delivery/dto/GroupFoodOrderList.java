@@ -22,11 +22,21 @@ public class GroupFoodOrderList {
 
     private String location;
 
+    private String longitude;
+
+    private String latitude;
+
     private String rating;
 
     private String imgUrl;
 
     private String deliveryLocation;
+
+    private String deliveryAddress;
+
+    private String deliveryLongitude;
+
+    private String deliveryLatitude;
 
     public UUID getGroupFoodOrderId() {
         return groupFoodOrderId;
@@ -84,6 +94,14 @@ public class GroupFoodOrderList {
         this.location = location;
     }
 
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
     public String getRating() {
         return rating;
     }
@@ -107,4 +125,30 @@ public class GroupFoodOrderList {
     public void setDeliveryLocation(String deliveryLocation) {
         this.deliveryLocation = deliveryLocation;
     }
+//    private Date orderTime;
+//    private String orderStatus;
+//    private Restaurant restaurant;
+//    private Delivery delivery;
+//
+//    @Data
+//    public static class Restaurant {
+//        private String name;
+//        private String id;
+//        private int rating;
+//        private String imgUrl;
+//        private String address;
+//        private double latitude;
+//        private double longitude;
+//        private String area;
+//        private Date pickupTime;
+//    }
+//
+//    @Data
+//    public static class Delivery {
+//        private String location;
+//        private String address;
+//        private double latitude;
+//        private double longitude;
+//        private Date deliveryTime;
+//    }
 }
