@@ -22,12 +22,6 @@ public class GroupFoodOrderList {
 
     private String location;
 
-    private String restaurantAddress;
-
-    private String restaurantLongitude;
-
-    private String restaurantLLatitude;
-
     private String rating;
 
     private String imgUrl;
@@ -36,9 +30,15 @@ public class GroupFoodOrderList {
 
     private String deliveryAddress;
 
+    private String deliveryLatitude;
+
     private String deliveryLongitude;
 
-    private String deliveryLatitude;
+    String restaurantAddress;
+
+    String restaurantLatitude;
+
+    String restaurantLongitude;
 
     public UUID getGroupFoodOrderId() {
         return groupFoodOrderId;
@@ -80,14 +80,6 @@ public class GroupFoodOrderList {
         this.restaurantId = restaurantId;
     }
 
-    public String getRestaurantName() {
-        return restaurantName;
-    }
-
-    public void setRestaurantName(String restaurantName) {
-        this.restaurantName = restaurantName;
-    }
-
     public String getRestaurantAddress() {
         return restaurantAddress;
     }
@@ -96,20 +88,36 @@ public class GroupFoodOrderList {
         this.restaurantAddress = restaurantAddress;
     }
 
-    public String getLocation() {
-        return location;
+    public String getRestaurantLatitude() {
+        return restaurantLatitude;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setRestaurantLatitude(String restaurantLatitude) {
+        this.restaurantLatitude = restaurantLatitude;
     }
 
     public String getRestaurantLongitude() {
         return restaurantLongitude;
     }
 
-    public void setRestaurantLongitude(String longitude) {
+    public void setRestaurantLongitude(String restaurantLongitude) {
         this.restaurantLongitude = restaurantLongitude;
+    }
+
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getRating() {
@@ -135,30 +143,28 @@ public class GroupFoodOrderList {
     public void setDeliveryLocation(String deliveryLocation) {
         this.deliveryLocation = deliveryLocation;
     }
-//    private Date orderTime;
-//    private String orderStatus;
-//    private Restaurant restaurant;
-//    private Delivery delivery;
-//
-//    @Data
-//    public static class Restaurant {
-//        private String name;
-//        private String id;
-//        private int rating;
-//        private String imgUrl;
-//        private String address;
-//        private double latitude;
-//        private double longitude;
-//        private String area;
-//        private Date pickupTime;
-//    }
-//
-//    @Data
-//    public static class Delivery {
-//        private String location;
-//        private String address;
-//        private double latitude;
-//        private double longitude;
-//        private Date deliveryTime;
-//    }
+
+    public String getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+    public void setDeliveryAddress(String deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
+    }
+
+    public String getDeliveryLatitude() {
+        return deliveryLatitude;
+    }
+
+    public void setDeliveryLatitude(String deliveryLatitude) {
+        this.deliveryLatitude = deliveryLatitude;
+    }
+
+    public String getDeliveryLongitude() {
+        return deliveryLongitude;
+    }
+
+    public void setDeliveryLongitude(String deliveryLongitude) {
+        this.deliveryLongitude = deliveryLongitude;
+    }
 }
