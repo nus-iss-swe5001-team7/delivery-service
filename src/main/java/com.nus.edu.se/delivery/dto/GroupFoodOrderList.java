@@ -22,9 +22,11 @@ public class GroupFoodOrderList {
 
     private String location;
 
-    private String longitude;
+    private String restaurantAddress;
 
-    private String latitude;
+    private String restaurantLongitude;
+
+    private String restaurantLLatitude;
 
     private String rating;
 
@@ -86,6 +88,14 @@ public class GroupFoodOrderList {
         this.restaurantName = restaurantName;
     }
 
+    public String getRestaurantAddress() {
+        return restaurantAddress;
+    }
+
+    public void setRestaurantAddress(String restaurantAddress) {
+        this.restaurantAddress = restaurantAddress;
+    }
+
     public String getLocation() {
         return location;
     }
@@ -94,12 +104,12 @@ public class GroupFoodOrderList {
         this.location = location;
     }
 
-    public String getLongitude() {
-        return longitude;
+    public String getRestaurantLongitude() {
+        return restaurantLongitude;
     }
 
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
+    public void setRestaurantLongitude(String longitude) {
+        this.restaurantLongitude = restaurantLongitude;
     }
 
     public String getRating() {
