@@ -22,8 +22,7 @@ jobs:
           cache: maven
 
       - name: Build with Maven
-        #run: mvn -B clean install
-        run: mvn -B clean package -DskipTests=false
+        run: mvn -B clean install -DskipParent=true
       - name: Run Test with Maven
         run: mvn test
 
